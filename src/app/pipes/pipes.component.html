@@ -1,0 +1,83 @@
+
+<h3>1.Example Lowercase</h3>
+<p>{{lower|lowercase}}</p>
+<h3>2.Example uppercase</h3>
+<p>{{upper|uppercase}}</p>
+<h3>3.Example Titlecase</h3>
+<p>Titlecase converts the first letter of a word in the uppercase.</p>
+<p>{{name|titlecase}}</p>
+<h3>4.Example Slice</h3>
+<p>{{name1|slice:1:3}}</p>
+<b>{{months | slice:2:6}}</b> 
+<!-- <p>here 2 and 6 refers to the start and the end index</p>  -->
+<h3>JSON PIPE</h3>
+{{ jsonval | json }}
+<h3>6.Example Number Pipe</h3>
+
+<h2>{{8.7844|number:'1.2-2'}}</h2>  
+<b>{{ 454.78787814 | number: '3.4-4' }}</b> // 3 is for main integer, 4 -4 are for integers to be displayed.
+<h3>7.Example Percent Pipe</h3>
+<h2>{{0.23|percent}}</h2>  
+<h3>8.Example Currency Pipe</h3>
+
+<h2>{{600|currency}}</h2>  
+<h2>{{0.23|currency:'GBP'}}</h2> 
+<h2>{{506|currency:'INR':'code'}}</h2> 
+<h3>9.Example Currency Pipe</h3>
+
+<h2> {{ birthday | date }}</h2>
+<p>Note - Parameterizing a pipe
+<br>We can also pass a parameter to the pipe. You can write the HTML code like this to pass the parameter.
+</p>
+<h2>{{ birthday | date:"dd/MM/yyyy" }}</h2>
+<h3>Chaining pipes
+</h3>
+<p>We can chain pipes together in and create useful combinations. We can use the uppercase or lowercase pipe in our example.
+
+</p>
+<h2>{{ birthday | date | uppercase }}</h2>
+<h1>Custom pipe</h1>
+<h2>Custome pipe example</h2>
+<table class="table table-striped">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>NAME</th>
+        <th>CITY</th>
+        <th>SALARY</th>
+        <th>DOB</th>
+        <th>Age</th>
+
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor = "let user of users">
+        <td>{{user.id}}</td>
+        <td>{{user.name}}</td>
+        <td>{{user.city}}</td>
+        <td>{{user.salary|currency:'INR':'symbol'}}</td>
+        <td>{{user.dob|date}}</td>
+    <td>{{user.dob|age}}</td>
+      </tr>
+ 
+    </tbody>
+  </table>
+  <p>{{users|json}}</p>
+
+
+  <p *ngIf = "(tiles | filter:filtertext)?.length ==0">
+    <span>No Result Found</span>
+  </p>
+
+  <h3>Filter data</h3>
+  <p><input type="text" [(ngModel)]="filtertext" class="form-control" placeholder="search"></p>
+
+  <ul>
+
+<li *ngFor = "let tile of tiles | filter:filtertext">{{tile.app}}:{{tile.colr}}- {{tile.story}}</li>
+  </ul>
+
+  <h3>Mathmatical</h3>
+  <h2>
+    {{10 | power: 3}}
+  </h2>
